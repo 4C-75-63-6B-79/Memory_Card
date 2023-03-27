@@ -12,17 +12,19 @@ function App() {
 
   function onButtonClick() {
     const randomNumArray = getRandomArray(4);
-    const characterDataArrayPromises = randomNumArray.map((index) => getCharacterAtIndex(index));
-    Promise.all(characterDataArrayPromises).then((dataArray) => setCharcDataArr(dataArray));
+    const charactersDataArrayPromises = randomNumArray.map((index) => getCharacterAtIndex(index));
+    Promise.all(charactersDataArrayPromises).then((dataArray) => setCharcDataArr(dataArray));
   }
 
   return (
     <div className="App">
       {"hello"}
       <button onClick={onButtonClick}>Click</button>
-      {
-        charcDataArr.map((characterData) => <Image key={characterData.id} src={characterData.image} />)
-      }
+      <main>
+        {
+          charcDataArr.map((characterData, index) => <Image key={index} src={characterData.image} name={characterData.name}/>)
+        }
+      </main>
     </div>
   );
 }
