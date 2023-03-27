@@ -8,12 +8,12 @@ import Image from "./components/image";
 
 function App() {
   
-  const [charcDataArr, setCharcDataArr] = useState([]);
+  const [charactersInfo, setCharactersInfo] = useState([]);
 
   function onButtonClick() {
     const randomNumArray = getRandomArray(4);
     const charactersDataArrayPromises = randomNumArray.map((index) => getCharacterAtIndex(index));
-    Promise.all(charactersDataArrayPromises).then((dataArray) => setCharcDataArr(dataArray));
+    Promise.all(charactersDataArrayPromises).then((dataArray) => setCharactersInfo(dataArray));
   }
 
   return (
@@ -22,7 +22,7 @@ function App() {
       <button onClick={onButtonClick}>Click</button>
       <main>
         {
-          charcDataArr.map((characterData, index) => <Image key={index} src={characterData.image} name={characterData.name}/>)
+          charactersInfo.map((characterData, index) => <Image key={index} src={characterData.image} name={characterData.name}/>)
         }
       </main>
     </div>
