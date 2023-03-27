@@ -1,11 +1,5 @@
-export default function Image({ src, name }) {
-
-    function onImageClick(event) {
-        console.log(event.target);
-        
-    }
-
+export default function Image({ src, characterName, characterId, onImageClicked }) {
     return(
-        <img src={src} alt={name} onClick={onImageClick}></img>
+        <img src={src} alt={characterName} onClick={() => onImageClicked(characterId)}></img>
     );
 }
