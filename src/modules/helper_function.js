@@ -25,6 +25,7 @@ const helperFunction = (function initHelperFunction() {
     }
 
     function shuffle(array = []) {
+        // Fischer yates shuffle modern method on wikipedia.
         const length = array.length;
         let max = length - 1;
         const shuffledArray = array;
