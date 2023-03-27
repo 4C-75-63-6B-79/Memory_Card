@@ -8,25 +8,28 @@ import Image from "./components/image";
 
 function App() {
   
-  const [charactersInfo, setCharactersInfo] = useState([]);
+  const [charactersInfo, setCharactersInfo] = useState({});
 
   function onButtonClick() {
-    const randomNumArray = getRandomArray(4);
+    const randomNumArray = getRandomArray(2);
     const charactersDataArrayPromises = randomNumArray.map((index) => getCharacterAtIndex(index));
     Promise.all(charactersDataArrayPromises).then((dataArray) => filterCharactersData(dataArray));
   }
 
   function filterCharactersData(charactersData) {
-    const filteredCharactersData = charactersData.map((characterData) => {
+    const fileteredCharactersInfo = charactersData.reduce((filteredInfo, characterData) => {
       return {
-        id: characterData.id,
-        image: characterData.image,
-        name: characterData.name,
-        clicked: false        
+        ...filteredInfo,
+        [characterData.id]: {
+          name: characterData.name,
+          image: characterData.image,
+          clicked: false
+        }
       };
     });
 
-    setCharactersInfo(filteredCharactersData);
+
+    // setCharactersInfo(fileteredCharactersInfo);
   }
 
   return (
@@ -35,7 +38,7 @@ function App() {
       <button onClick={onButtonClick}>Click</button>
       <main>
         {
-          charactersInfo.map((characterData, index) => <Image key={index} src={characterData.image} name={characterData.name}/>)
+          // Object.keys(charactersInfo).map((characterData, index) => <Image key={index} src={characterData.image} name={characterData.name}/>)
         }
       </main>
     </div>
