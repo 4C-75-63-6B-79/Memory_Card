@@ -13,7 +13,20 @@ function App() {
   function onButtonClick() {
     const randomNumArray = getRandomArray(4);
     const charactersDataArrayPromises = randomNumArray.map((index) => getCharacterAtIndex(index));
-    Promise.all(charactersDataArrayPromises).then((dataArray) => setCharactersInfo(dataArray));
+    Promise.all(charactersDataArrayPromises).then((dataArray) => filterCharactersData(dataArray));
+  }
+
+  function filterCharactersData(charactersData) {
+    const filteredCharactersData = charactersData.map((characterData) => {
+      return {
+        id: characterData.id,
+        image: characterData.image,
+        name: characterData.name,
+        clicked: false        
+      };
+    });
+
+    console.log(filteredCharactersData);
   }
 
   return (
