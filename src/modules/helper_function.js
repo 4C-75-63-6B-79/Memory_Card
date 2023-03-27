@@ -4,15 +4,19 @@ const helperFunction = (function initHelperFunction() {
         const characterData = fetch(`https://rickandmortyapi.com/api/character/${index}`, {
           mode: "cors",
         }).then((response) => response.json());
-        console.log("clicked");
         return(characterData);
+    }
+
+    function getRandomNumber(from = 0, to = 0) {
+        return Math.floor(Math.random() * (to - from + 1) + from);
     }
 
     return{
         getCharacterAtIndex,
+        getRandomNumber
     };
 })();
 
-const { getCharacterAtIndex } = helperFunction;
+const { getCharacterAtIndex, getRandomNumber } = helperFunction;
 
-export { getCharacterAtIndex };
+export { getCharacterAtIndex, getRandomNumber };
