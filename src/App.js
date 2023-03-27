@@ -11,7 +11,7 @@ function App() {
   const [charactersInfo, setCharactersInfo] = useState({});
 
   function onButtonClick() {
-    const randomNumArray = getRandomArray(2);
+    const randomNumArray = getRandomArray(4);
     const charactersDataArrayPromises = randomNumArray.map((index) => getCharacterAtIndex(index));
     Promise.all(charactersDataArrayPromises).then((dataArray) => filterCharactersData(dataArray));
   }
@@ -21,15 +21,15 @@ function App() {
       return {
         ...filteredInfo,
         [characterData.id]: {
+          id: characterData.id,
           name: characterData.name,
           image: characterData.image,
           clicked: false
         }
       };
-    });
+    }, {});
 
-
-    // setCharactersInfo(fileteredCharactersInfo);
+    setCharactersInfo(fileteredCharactersInfo);
   }
 
   return (
@@ -38,7 +38,10 @@ function App() {
       <button onClick={onButtonClick}>Click</button>
       <main>
         {
-          // Object.keys(charactersInfo).map((characterData, index) => <Image key={index} src={characterData.image} name={characterData.name}/>)
+          Object.keys(charactersInfo).map((keyValue, index) => {
+            const { id, name, image } = charactersInfo[keyValue];
+            return <Image key={index} src={image} name={name} id={id}/>;
+          })
         }
       </main>
     </div>
