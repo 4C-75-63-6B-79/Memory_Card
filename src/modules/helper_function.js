@@ -24,13 +24,30 @@ const helperFunction = (function initHelperFunction() {
         return numArray;
     }
 
+    function shuffle(array = []) {
+        const length = array.length;
+        let max = length - 1;
+        const shuffledArray = array;
+
+        while(max > 0) {
+            const randomNumber = getRandomNumber(0, max);
+            const temp = shuffledArray[max];
+            shuffledArray[max] = shuffledArray[randomNumber];
+            shuffledArray[randomNumber] = temp;
+            max -= 1;
+        }   
+
+        return shuffledArray;        
+    }
+
     return{
         getCharacterAtIndex,
         getRandomNumber,
-        getRandomArray
+        getRandomArray,
+        shuffle
     };
 })();
 
-const { getCharacterAtIndex, getRandomNumber, getRandomArray } = helperFunction;
+const { getCharacterAtIndex, getRandomNumber, getRandomArray, shuffle } = helperFunction;
 
-export { getCharacterAtIndex, getRandomNumber, getRandomArray };
+export { getCharacterAtIndex, getRandomNumber, getRandomArray, shuffle };
