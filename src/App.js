@@ -32,6 +32,17 @@ function App() {
     setCharactersInfo(fileteredCharactersInfo);
   }
 
+  function handleImageClicked(clickedCharacterId) {
+    const updatedCharactersInfo = {
+      ...charactersInfo,
+      [clickedCharacterId]: {
+        ...charactersInfo[clickedCharacterId],
+        clicked: true
+      }
+    }; 
+    setCharactersInfo(updatedCharactersInfo);
+  }
+
   return (
     <div className="App">
       {"hello"}
@@ -40,7 +51,7 @@ function App() {
         {
           Object.keys(charactersInfo).map((keyValue, index) => {
             const { id, name, image } = charactersInfo[keyValue];
-            return <Image key={index} src={image} name={name} id={id}/>;
+            return <Image key={id} src={image} characterName={name} characterId={id} onImageClicked={handleImageClicked}/>;
           })
         }
       </main>
