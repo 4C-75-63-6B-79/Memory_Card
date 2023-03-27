@@ -26,7 +26,7 @@ function App() {
       };
     });
 
-    console.log(filteredCharactersData);
+    setCharactersInfo(filteredCharactersData);
   }
 
   return (
