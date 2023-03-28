@@ -53,6 +53,14 @@ function App() {
     return isImageClickedAlready;
   }
 
+  function updateScoreAndHighScore() {
+    setScore((score) => score + 1);
+    if(score === highScore) {
+      setHighScore((highScore) => highScore + 1);
+    }
+  }
+
+  // call this after the components did update.
   function checkIsGameFinished() {
     return charactersInfo.every((characterInfo) => characterInfo["clicked"]);
   }
@@ -61,6 +69,7 @@ function App() {
     const isImageClickedAlready = checkIfImageAlreadyClicked(clickedCharacterId);
     if(!isImageClickedAlready) {
       console.log("increase score");
+      updateScoreAndHighScore();
       markImageClickedTrue(clickedCharacterId);
     } else {
       console.log(" you lose");
