@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getCharacterAtIndex, getRandomArray, shuffle } from "./modules/helper_function";
 
 import Image from "./components/image";
@@ -66,7 +66,10 @@ function App() {
 
   // call this after the components did update.
   function checkIsGameFinished() {
-    return charactersInfo.every((characterInfo) => characterInfo["clicked"]);
+    const totalCharacters = charactersInfo.length;
+    const totalClickedCharacters = charactersInfo.filter((characterInfo) => characterInfo["clicked"]).length;
+    const totalUnclickedCharacters = totalCharacters - totalClickedCharacters;
+    return totalUnclickedCharacters === 1;
   }
   
   function handleImageClicked(clickedCharacterId) {
