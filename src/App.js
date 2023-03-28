@@ -9,6 +9,8 @@ import Image from "./components/image";
 function App() {
   
   const [charactersInfo, setCharactersInfo] = useState([]);
+  const [score, setScore] = useState(0);
+  const [highScore, setHighScore] = useState(0);
 
   function onButtonClick() {
     const randomNumArray = getRandomArray(4);
@@ -30,6 +32,10 @@ function App() {
   }
 
   function handleImageClicked(clickedCharacterId) {
+    markImageClickedTrue(clickedCharacterId);
+  }
+
+  function markImageClickedTrue(clickedCharacterId) {
     const updatedCharactersInfo = charactersInfo.map((characterInfo) => {
       if(characterInfo.id === clickedCharacterId) {
         return {
@@ -48,6 +54,8 @@ function App() {
     <div className="App">
       {"hello"}
       <button onClick={onButtonClick}>Click</button>
+      <p>Score: {score}</p>
+      <p>HighScore: {highScore}</p>
       <main>
         {
           charactersInfo.map((characterInfo) => {
