@@ -13,7 +13,11 @@ function App() {
   const [highScore, setHighScore] = useState(0);
 
   function onButtonClick() {
-    const randomNumArray = getRandomArray(4);
+    getRawCharacterData();
+  }
+
+  function getRawCharacterData(numberOfCharacter = 4) {
+    const randomNumArray = getRandomArray(numberOfCharacter);
     const charactersDataArrayPromises = randomNumArray.map((index) => getCharacterAtIndex(index));
     Promise.all(charactersDataArrayPromises).then((dataArray) => filterCharactersData(dataArray));
   }
@@ -73,6 +77,7 @@ function App() {
       markImageClickedTrue(clickedCharacterId);
     } else {
       console.log(" you lose");
+      setScore(0);
     }
   }
 
