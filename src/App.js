@@ -52,11 +52,25 @@ function App() {
     });
     return isImageClickedAlready;
   }
+
+  function checkIsGameFinished() {
+    return charactersInfo.every((characterInfo) => characterInfo["clicked"]);
+  }
   
   function handleImageClicked(clickedCharacterId) {
     const isImageClickedAlready = checkIfImageAlreadyClicked(clickedCharacterId);
-    console.log(isImageClickedAlready);
-    markImageClickedTrue(clickedCharacterId);
+    const isGameFinished = checkIsGameFinished();
+    if(isGameFinished) {
+      console.log("game finished");
+      return ;
+    }
+    
+    if(!isImageClickedAlready) {
+      console.log("increase score");
+      markImageClickedTrue(clickedCharacterId);
+    } else {
+      console.log(" you lose");
+    }
   }
 
   return (
