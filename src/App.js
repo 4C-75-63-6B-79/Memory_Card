@@ -59,12 +59,6 @@ function App() {
   
   function handleImageClicked(clickedCharacterId) {
     const isImageClickedAlready = checkIfImageAlreadyClicked(clickedCharacterId);
-    const isGameFinished = checkIsGameFinished();
-    if(isGameFinished) {
-      console.log("game finished");
-      return ;
-    }
-    
     if(!isImageClickedAlready) {
       console.log("increase score");
       markImageClickedTrue(clickedCharacterId);
