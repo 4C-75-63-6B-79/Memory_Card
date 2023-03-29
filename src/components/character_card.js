@@ -1,5 +1,8 @@
-export default function Image({ src, characterName, characterId, onImageClicked }) {
+export default function CharacterCard({ src, characterName, characterId, onImageClicked }) {
     return(
-        <img src={src} alt={characterName} onClick={() => onImageClicked(characterId)}></img>
+        <div>
+            <img src={src} alt={characterName} onClick={() => onImageClicked(characterId)}></img>
+            <p>{characterName}</p>
+        </div>
     );
 }
