@@ -2,7 +2,7 @@ import "./App.css";
 import { useState } from "react";
 import { getCharacterAtIndex, getRandomArray, shuffle } from "./modules/helper_function";
 
-import Image from "./components/character_card";
+import CharacterCard from "./components/character_card";
 
 
 
@@ -107,8 +107,8 @@ function App() {
           loading === false ? 
           charactersInfo.map((characterInfo) => {
             const { id, name, image } = characterInfo;
-            return <Image key={id} src={image} characterName={name} characterId={id} onImageClicked={handleImageClicked}/>;
-          }) : "loading"
+            return <CharacterCard key={id} src={image} characterName={name} characterId={id} onImageClicked={handleImageClicked}/>;
+          }) : <h1>loading...</h1>
         }
       </main>
     </div>
