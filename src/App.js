@@ -79,17 +79,14 @@ function App() {
   function handleImageClicked(clickedCharacterId) {
     const isImageClickedAlready = checkIfImageAlreadyClicked(clickedCharacterId);
     if(!isImageClickedAlready) {
-      console.log("increase score");
       updateScoreAndHighScore();
       markImageClickedTrue(clickedCharacterId);
     } else {
-      console.log(" you lose");
       setScore(0);
       setLevel(1);
       getRawCharacterData();
     }
     if(checkIsGameFinished()) {
-      console.log("next level");
       const currentLevel = level+1;
       setLevel((level) => level + 1);
       getRawCharacterData(4*currentLevel);
