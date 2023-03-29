@@ -1,0 +1,102 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #444444;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+header {
+    padding: 0.5rem;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+header > h1 {
+    padding: 0.25rem;
+}
+
+#scoreContainer {
+    padding: 0.25rem;
+    font-size: 1.4rem;
+}
+
+main {
+    padding: 1rem 0.75rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+main > h2 {
+    padding: 1rem;
+}
+
+#loadingContainer {
+    margin-top: 5rem;
+}
+
+#imageContainer {
+    display: flex;
+    flex-flow: row wrap;
+    justify-items: center;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.characterCard {
+    width: 220px;
+    padding: 0.4rem;
+    border: 0.2rem solid black;
+    border-radius: 0.5rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    flex-shrink: 0;
+
+    transition: transform 250ms ease-in-out;
+    
+    animation-name: loadCard;
+    animation-duration: 350ms;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+}
+
+@keyframes loadCard {
+    0%{
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.characterCard:hover {
+    transform: scale(1.05);
+}
+
+.characterCard > img {
+    width: 100%;
+    border-radius: 0.4rem;
+    border-bottom: 0.2rem solid black;
+}
+
+.characterCard > p {
+    padding: 0.25rem;
+    font-weight: bold;
+    word-wrap: break-word;
+}
