@@ -81,7 +81,7 @@ function App() {
     } else {
       console.log(" you lose");
       setScore(0);
-      setLevel(0);
+      setLevel(1);
       getRawCharacterData();
     }
     if(checkIsGameFinished()) {
