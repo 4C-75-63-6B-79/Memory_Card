@@ -80,8 +80,10 @@ function App() {
     } else {
       console.log(" you lose");
       setScore(0);
+      getRawCharacterData();
     }
     if(checkIsGameFinished()) {
+      console.log("next level");
       getRawCharacterData();
     }
   }
