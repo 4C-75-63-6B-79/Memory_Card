@@ -86,8 +86,9 @@ function App() {
     }
     if(checkIsGameFinished()) {
       console.log("next level");
+      const currentLevel = level+1;
       setLevel((level) => level + 1);
-      getRawCharacterData();
+      getRawCharacterData(4*currentLevel);
     }
   }
 
