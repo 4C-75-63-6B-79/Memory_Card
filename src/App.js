@@ -11,6 +11,7 @@ function App() {
   const [charactersInfo, setCharactersInfo] = useState([]);
   const [score, setScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
+  const [level, setLever] = useState(0);
 
   function onButtonClick() {
     getRawCharacterData();
@@ -92,6 +93,7 @@ function App() {
     <div className="App">
       {"hello"}
       <button onClick={onButtonClick}>Click</button>
+      <p>Level: {level}</p>
       <p>Score: {score}</p>
       <p>HighScore: {highScore}</p>
       <main>
