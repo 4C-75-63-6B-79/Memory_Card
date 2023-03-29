@@ -14,10 +14,6 @@ function App() {
   const [highScore, setHighScore] = useState(0);
   const [level, setLevel] = useState(1);
 
-  function onButtonClick() {
-    getRawCharacterData();
-  }
-
   function getRawCharacterData(numberOfCharacter = 4) {
     setLoading(true);
     const randomNumArray = getRandomArray(numberOfCharacter);
