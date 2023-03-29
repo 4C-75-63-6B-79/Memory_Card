@@ -1,5 +1,5 @@
 import "./App.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { getCharacterAtIndex, getRandomArray, shuffle } from "./modules/helper_function";
 
 import Image from "./components/image";
@@ -64,7 +64,6 @@ function App() {
     }
   }
 
-  // call this after the components did update.
   function checkIsGameFinished() {
     const totalCharacters = charactersInfo.length;
     const totalClickedCharacters = charactersInfo.filter((characterInfo) => characterInfo["clicked"]).length;
@@ -81,6 +80,9 @@ function App() {
     } else {
       console.log(" you lose");
       setScore(0);
+    }
+    if(checkIsGameFinished()) {
+      getRawCharacterData();
     }
   }
 
