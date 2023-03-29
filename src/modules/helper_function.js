@@ -1,7 +1,6 @@
 const helperFunction = (function initHelperFunction() {
 
     function getCharacterAtIndex(index) {
-        console.log(index);
         const characterData = fetch(`https://rickandmortyapi.com/api/character/${index}`, {
           mode: "cors",
         }).then((response) => response.json());
