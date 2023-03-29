@@ -11,7 +11,7 @@ function App() {
   const [charactersInfo, setCharactersInfo] = useState([]);
   const [score, setScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
-  const [level, setLever] = useState(0);
+  const [level, setLevel] = useState(1);
 
   function onButtonClick() {
     getRawCharacterData();
@@ -81,10 +81,12 @@ function App() {
     } else {
       console.log(" you lose");
       setScore(0);
+      setLevel(0);
       getRawCharacterData();
     }
     if(checkIsGameFinished()) {
       console.log("next level");
+      setLevel((level) => level + 1);
       getRawCharacterData();
     }
   }
