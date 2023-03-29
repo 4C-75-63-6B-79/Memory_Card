@@ -36,6 +36,13 @@ function App() {
     setCharactersInfo(fileteredCharactersInfo);
   }
 
+  function checkIfImageAlreadyClicked(clickedCharacterId) {
+    const isImageClickedAlready = charactersInfo.some((characterInfo) => {
+      return characterInfo["id"] === clickedCharacterId && characterInfo["clicked"];
+    });
+    return isImageClickedAlready;
+  }
+
   function markImageClickedTrue(clickedCharacterId) {
     const updatedCharactersInfo = charactersInfo.map((characterInfo) => {
       if(characterInfo.id === clickedCharacterId) {
@@ -49,13 +56,6 @@ function App() {
       };
     });
     setCharactersInfo(shuffle(updatedCharactersInfo));
-  }
-
-  function checkIfImageAlreadyClicked(clickedCharacterId) {
-    const isImageClickedAlready = charactersInfo.some((characterInfo) => {
-      return characterInfo["id"] === clickedCharacterId && characterInfo["clicked"];
-    });
-    return isImageClickedAlready;
   }
 
   function updateScoreAndHighScore() {
