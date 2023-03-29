@@ -69,20 +69,6 @@ main > h2 {
     flex-shrink: 0;
 
     transition: transform 250ms ease-in-out;
-    
-    animation-name: loadCard;
-    animation-duration: 350ms;
-    animation-iteration-count: 1;
-    animation-timing-function: linear;
-}
-
-@keyframes loadCard {
-    0%{
-        transform: scale(0);
-    }
-    100% {
-        transform: scale(1);
-    }
 }
 
 .characterCard:hover {
