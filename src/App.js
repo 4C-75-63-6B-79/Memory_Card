@@ -9,7 +9,7 @@ import CharacterCard from "./components/character_card";
 function App() {
 
   const [loading, setLoading] = useState(false);  
-  const [charactersInfo, setCharactersInfo] = useState([]);
+  const [charactersInfo, setCharactersInfo] = useState(initialCharacterImageLoad);
   const [score, setScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
   const [level, setLevel] = useState(1);
@@ -33,6 +33,11 @@ function App() {
 
     setCharactersInfo(fileteredCharactersInfo);
     setLoading(false);
+  }
+
+  function initialCharacterImageLoad() {
+    getRawCharacterData();
+    return [];
   }
 
   function checkIfImageAlreadyClicked(clickedCharacterId) {
