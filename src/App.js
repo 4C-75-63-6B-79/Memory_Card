@@ -102,17 +102,21 @@ function App() {
         <h1>Rick & Morty Memory Card</h1>
         <div id="scoreContainer">Score: {score} | Best: {highScore}</div>
       </header>
-      
-      <p>Level: {level}</p>
-      <p>Score: {score}</p>
-      <p>HighScore: {highScore}</p>
       <main>
+        <h2>Level {level}. Choose Your Card!</h2>
         {
           loading === false ? 
-          charactersInfo.map((characterInfo) => {
-            const { id, name, image } = characterInfo;
-            return <CharacterCard key={id} src={image} characterName={name} characterId={id} onImageClicked={handleImageClicked}/>;
-          }) : <h1>loading...</h1>
+          <div id="imageContainer">
+          {
+            charactersInfo.map((characterInfo) => {
+              const { id, name, image } = characterInfo;
+              return <CharacterCard key={id} src={image} characterName={name} characterId={id} onImageClicked={handleImageClicked}/>;
+            })
+          }
+          </div> : 
+          <div id="loadingContainer">
+            <h1>loading lvl {level}...</h1>
+          </div>
         }
       </main>
     </div>
