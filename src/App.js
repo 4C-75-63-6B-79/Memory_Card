@@ -85,6 +85,7 @@ function App() {
       setScore(0);
       setLevel(1);
       getRawCharacterData();
+      return;
     }
     if(checkIsGameFinished()) {
       const currentLevel = level+1;
