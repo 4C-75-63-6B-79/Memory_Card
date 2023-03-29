@@ -97,8 +97,11 @@ function App() {
 
   return (
     <div className="App">
-      {"hello"}
-      <button onClick={onButtonClick}>Click</button>
+      <header>
+        <h1>Rick & Morty Memory Card</h1>
+        <div id="scoreContainer">Score: {score} | Best: {highScore}</div>
+      </header>
+      
       <p>Level: {level}</p>
       <p>Score: {score}</p>
       <p>HighScore: {highScore}</p>
