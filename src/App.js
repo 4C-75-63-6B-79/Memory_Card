@@ -2,12 +2,13 @@ import "./App.css";
 import { useState } from "react";
 import { getCharacterAtIndex, getRandomArray, shuffle } from "./modules/helper_function";
 
-import Image from "./components/image";
+import Image from "./components/character_card";
 
 
 
 function App() {
-  
+
+  const [loading, setLoading] = useState(false);  
   const [charactersInfo, setCharactersInfo] = useState([]);
   const [score, setScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
@@ -18,6 +19,7 @@ function App() {
   }
 
   function getRawCharacterData(numberOfCharacter = 4) {
+    setLoading(true);
     const randomNumArray = getRandomArray(numberOfCharacter);
     const charactersDataArrayPromises = randomNumArray.map((index) => getCharacterAtIndex(index));
     Promise.all(charactersDataArrayPromises).then((dataArray) => filterCharactersData(dataArray));
@@ -34,6 +36,7 @@ function App() {
     });
 
     setCharactersInfo(fileteredCharactersInfo);
+    setLoading(false);
   }
 
   function checkIfImageAlreadyClicked(clickedCharacterId) {
@@ -101,10 +104,11 @@ function App() {
       <p>HighScore: {highScore}</p>
       <main>
         {
+          loading === false ? 
           charactersInfo.map((characterInfo) => {
             const { id, name, image } = characterInfo;
             return <Image key={id} src={image} characterName={name} characterId={id} onImageClicked={handleImageClicked}/>;
-          })
+          }) : "loading"
         }
       </main>
     </div>
